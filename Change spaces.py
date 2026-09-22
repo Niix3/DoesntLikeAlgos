@@ -15,7 +15,7 @@ def url_decode(string: list, real_string_len:int, replace_with: str = "%20") -> 
     return string
 
 
-test_cases = ["Hello world!", " ", "Hi ", "    Hi", "Hi    "]
+test_cases = ["Hello world! ", " ", "Hi ", "    Hi", "Hi    "]
 test_results = ["Hello%20world!", "%20", "Hi%20", "%20%20%20%20Hi", "Hi%20%20%20%20"]
 replace = "%20"
 
@@ -24,5 +24,6 @@ for test, test_result in zip(test_cases, test_results):
     test_result_real = list(test_result)
 
     string_len = len(test)
-    assert url_decode(test_value, string_len) == test_result_real, (f"Ошибка в тесте {test}, ожидалось {test_result},"
-                                                        f" получили {url_decode(test_value, string_len)}")
+    res = url_decode(test_value, string_len)
+    assert res == test_result_real, (f"Ошибка в тесте {test}, ожидалось {test_result},"
+                                                        f" получили {res}")
